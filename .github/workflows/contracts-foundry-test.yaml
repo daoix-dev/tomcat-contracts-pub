@@ -1,0 +1,29 @@
+on: [push]
+
+name: Contracts test (Foundry)
+
+jobs:
+  check:
+    name: Tomcat
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'yarn'
+          cache-dependency-path: protocol/yarn.lock
+
+      - name: install node packages
+        run: cd protocol && yarn
+
+      - name: Run tests
+        run: cd protocol && forge test -vvv

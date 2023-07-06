@@ -1,0 +1,5 @@
+{
+    "lock": "./deno/deno.lock",
+    "tasks" : {
+    }
+}
