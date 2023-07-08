@@ -1,5 +1,5 @@
 pragma solidity 0.8.18;
-// SPDX-License-Identifier: AGPL-3.0-or-later
+// SPDX-License-Identifier: AGPL-3.0
 
 import { Test } from "forge-std/Test.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -7,7 +7,7 @@ import { SafeERC20 } from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.s
 
 import { TomcatLaunchVault } from "contracts/launch/TomcatLaunchVault.sol";
 import { TcMav } from "contracts/core/TcMav.sol";
-import { FakeErc20 } from "contracts/test/FakeErc20.sol";
+import { FakeOFT } from "contracts/test/FakeOFT.sol";
 import { ITomcatLaunchLocker } from "contracts/interfaces/launch/ITomcatLaunchLocker.sol";
 
 /* solhint-disable func-name-mixedcase, contract-name-camelcase, not-rely-on-time */
@@ -31,7 +31,7 @@ contract MockTomcatLaunchLocker is ITomcatLaunchLocker {
 }
 
 contract TomcatLaunchVaultTestBase is Test {
-    FakeErc20 public mavToken;
+    FakeOFT public mavToken;
     TcMav public tcMavToken;
     TomcatLaunchVault public launchVault;
     MockTomcatLaunchLocker public locker;
@@ -39,6 +39,7 @@ contract TomcatLaunchVaultTestBase is Test {
     address public msig = makeAddr("msig");
     address public iceman = makeAddr("iceman");
     address public goose = makeAddr("goose");
+    address public lzEndpoint = makeAddr("lzEndpoint");
 
     // 1 Jun 2023
     uint256 public constant START_TIME = 1_685_577_600;
@@ -46,8 +47,8 @@ contract TomcatLaunchVaultTestBase is Test {
 
     function setUp() public {
         vm.warp(START_TIME);
-        mavToken = new FakeErc20("MAV", "MAV");
-        tcMavToken = new TcMav("Tomcat tcMAV", "tcMAV");
+        mavToken = new FakeOFT("MAV", "MAV", lzEndpoint);
+        tcMavToken = new TcMav(lzEndpoint);
         launchVault = new TomcatLaunchVault(address(mavToken), address(tcMavToken), CLOSING_TIME);
         launchVault.transferOwnership(msig);
 

@@ -1,5 +1,5 @@
 pragma solidity 0.8.18;
-// SPDX-License-Identifier: AGPL-3.0-or-later
+// SPDX-License-Identifier: AGPL-3.0
 // Tomcat (launch/TomcatLaunchVault.sol)
 
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
@@ -7,7 +7,6 @@ import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { ITcMav } from "contracts/interfaces/core/ITcMav.sol";
 import { ITomcatLaunchLocker } from "contracts/interfaces/launch/ITomcatLaunchLocker.sol";
 import { SafeERC20 } from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-
 /* solhint-disable not-rely-on-time */
 
 /**

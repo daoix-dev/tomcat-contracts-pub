@@ -5,13 +5,14 @@
                 "type": "function",
                 "name": "lockMav",
                 "source_mapping": {
-                    "start": 4649,
+                    "start": 4639,
                     "length": 423,
                     "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                     "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                     "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                     "is_dependency": false,
                     "lines": [
+                        132,
                         133,
                         134,
                         135,
@@ -20,8 +21,7 @@
                         138,
                         139,
                         140,
-                        141,
-                        142
+                        141
                     ],
                     "starting_column": 5,
                     "ending_column": 6
@@ -31,13 +31,14 @@
                         "type": "contract",
                         "name": "TomcatLaunchVault",
                         "source_mapping": {
-                            "start": 1270,
+                            "start": 1260,
                             "length": 3804,
                             "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                             "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                             "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                             "is_dependency": false,
                             "lines": [
+                                28,
                                 29,
                                 30,
                                 31,
@@ -151,8 +152,7 @@
                                 139,
                                 140,
                                 141,
-                                142,
-                                143
+                                142
                             ],
                             "starting_column": 1,
                             "ending_column": 2
@@ -165,14 +165,14 @@
                 "type": "node",
                 "name": "amount == 0",
                 "source_mapping": {
-                    "start": 4903,
+                    "start": 4893,
                     "length": 11,
                     "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                     "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                     "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                     "is_dependency": false,
                     "lines": [
-                        137
+                        136
                     ],
                     "starting_column": 13,
                     "ending_column": 24
@@ -182,13 +182,14 @@
                         "type": "function",
                         "name": "lockMav",
                         "source_mapping": {
-                            "start": 4649,
+                            "start": 4639,
                             "length": 423,
                             "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                             "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                             "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                             "is_dependency": false,
                             "lines": [
+                                132,
                                 133,
                                 134,
                                 135,
@@ -197,8 +198,7 @@
                                 138,
                                 139,
                                 140,
-                                141,
-                                142
+                                141
                             ],
                             "starting_column": 5,
                             "ending_column": 6
@@ -208,13 +208,14 @@
                                 "type": "contract",
                                 "name": "TomcatLaunchVault",
                                 "source_mapping": {
-                                    "start": 1270,
+                                    "start": 1260,
                                     "length": 3804,
                                     "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                                     "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                                     "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                                     "is_dependency": false,
                                     "lines": [
+                                        28,
                                         29,
                                         30,
                                         31,
@@ -328,8 +329,7 @@
                                         139,
                                         140,
                                         141,
-                                        142,
-                                        143
+                                        142
                                     ],
                                     "starting_column": 1,
                                     "ending_column": 2
@@ -341,10 +341,10 @@
                 }
             }
         ],
-        "description": "TomcatLaunchVault.lockMav() (contracts/launch/TomcatLaunchVault.sol#133-142) uses a dangerous strict equality:\n\t- amount == 0 (contracts/launch/TomcatLaunchVault.sol#137)\n",
-        "markdown": "[TomcatLaunchVault.lockMav()](contracts/launch/TomcatLaunchVault.sol#L133-L142) uses a dangerous strict equality:\n\t- [amount == 0](contracts/launch/TomcatLaunchVault.sol#L137)\n",
-        "first_markdown_element": "contracts/launch/TomcatLaunchVault.sol#L133-L142",
-        "id": "e1bc1079edf1e13d43d60184011dd4d7fc723944ca366b057ad53f17515e23c3",
+        "description": "TomcatLaunchVault.lockMav() (contracts/launch/TomcatLaunchVault.sol#132-141) uses a dangerous strict equality:\n\t- amount == 0 (contracts/launch/TomcatLaunchVault.sol#136)\n",
+        "markdown": "[TomcatLaunchVault.lockMav()](contracts/launch/TomcatLaunchVault.sol#L132-L141) uses a dangerous strict equality:\n\t- [amount == 0](contracts/launch/TomcatLaunchVault.sol#L136)\n",
+        "first_markdown_element": "contracts/launch/TomcatLaunchVault.sol#L132-L141",
+        "id": "768dea68d6f1e6fb194b507013e1560bdd66d5a3823f1215cf9ac9d6ddee690e",
         "check": "incorrect-equality",
         "impact": "Medium",
         "confidence": "High"
@@ -355,13 +355,14 @@
                 "type": "function",
                 "name": "deposit",
                 "source_mapping": {
-                    "start": 2741,
+                    "start": 2731,
                     "length": 404,
                     "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                     "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                     "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                     "is_dependency": false,
                     "lines": [
+                        77,
                         78,
                         79,
                         80,
@@ -371,8 +372,7 @@
                         84,
                         85,
                         86,
-                        87,
-                        88
+                        87
                     ],
                     "starting_column": 5,
                     "ending_column": 6
@@ -382,13 +382,14 @@
                         "type": "contract",
                         "name": "TomcatLaunchVault",
                         "source_mapping": {
-                            "start": 1270,
+                            "start": 1260,
                             "length": 3804,
                             "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                             "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                             "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                             "is_dependency": false,
                             "lines": [
+                                28,
                                 29,
                                 30,
                                 31,
@@ -502,8 +503,7 @@
                                 139,
                                 140,
                                 141,
-                                142,
-                                143
+                                142
                             ],
                             "starting_column": 1,
                             "ending_column": 2
@@ -516,14 +516,14 @@
                 "type": "node",
                 "name": "block.timestamp > closingTimestamp",
                 "source_mapping": {
-                    "start": 2848,
+                    "start": 2838,
                     "length": 34,
                     "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                     "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                     "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                     "is_dependency": false,
                     "lines": [
-                        80
+                        79
                     ],
                     "starting_column": 13,
                     "ending_column": 47
@@ -533,13 +533,14 @@
                         "type": "function",
                         "name": "deposit",
                         "source_mapping": {
-                            "start": 2741,
+                            "start": 2731,
                             "length": 404,
                             "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                             "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                             "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                             "is_dependency": false,
                             "lines": [
+                                77,
                                 78,
                                 79,
                                 80,
@@ -549,8 +550,7 @@
                                 84,
                                 85,
                                 86,
-                                87,
-                                88
+                                87
                             ],
                             "starting_column": 5,
                             "ending_column": 6
@@ -560,13 +560,14 @@
                                 "type": "contract",
                                 "name": "TomcatLaunchVault",
                                 "source_mapping": {
-                                    "start": 1270,
+                                    "start": 1260,
                                     "length": 3804,
                                     "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                                     "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                                     "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                                     "is_dependency": false,
                                     "lines": [
+                                        28,
                                         29,
                                         30,
                                         31,
@@ -680,8 +681,7 @@
                                         139,
                                         140,
                                         141,
-                                        142,
-                                        143
+                                        142
                                     ],
                                     "starting_column": 1,
                                     "ending_column": 2
@@ -693,10 +693,10 @@
                 }
             }
         ],
-        "description": "TomcatLaunchVault.deposit(uint256) (contracts/launch/TomcatLaunchVault.sol#78-88) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp > closingTimestamp (contracts/launch/TomcatLaunchVault.sol#80)\n",
-        "markdown": "[TomcatLaunchVault.deposit(uint256)](contracts/launch/TomcatLaunchVault.sol#L78-L88) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- [block.timestamp > closingTimestamp](contracts/launch/TomcatLaunchVault.sol#L80)\n",
-        "first_markdown_element": "contracts/launch/TomcatLaunchVault.sol#L78-L88",
-        "id": "346e140dfd0f9b1e84ca3b5c63ca3f0b6dad0732f8b00d7c0bea2d7de12a8f95",
+        "description": "TomcatLaunchVault.deposit(uint256) (contracts/launch/TomcatLaunchVault.sol#77-87) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp > closingTimestamp (contracts/launch/TomcatLaunchVault.sol#79)\n",
+        "markdown": "[TomcatLaunchVault.deposit(uint256)](contracts/launch/TomcatLaunchVault.sol#L77-L87) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- [block.timestamp > closingTimestamp](contracts/launch/TomcatLaunchVault.sol#L79)\n",
+        "first_markdown_element": "contracts/launch/TomcatLaunchVault.sol#L77-L87",
+        "id": "830d59702524e42d2f9620ba1a0816d78bda40a1a6dcf381b1263f8e33742c40",
         "check": "timestamp",
         "impact": "Low",
         "confidence": "Medium"
@@ -707,13 +707,14 @@
                 "type": "function",
                 "name": "withdraw",
                 "source_mapping": {
-                    "start": 3303,
+                    "start": 3293,
                     "length": 382,
                     "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                     "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                     "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                     "is_dependency": false,
                     "lines": [
+                        94,
                         95,
                         96,
                         97,
@@ -723,8 +724,7 @@
                         101,
                         102,
                         103,
-                        104,
-                        105
+                        104
                     ],
                     "starting_column": 5,
                     "ending_column": 6
@@ -734,13 +734,14 @@
                         "type": "contract",
                         "name": "TomcatLaunchVault",
                         "source_mapping": {
-                            "start": 1270,
+                            "start": 1260,
                             "length": 3804,
                             "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                             "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                             "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                             "is_dependency": false,
                             "lines": [
+                                28,
                                 29,
                                 30,
                                 31,
@@ -854,8 +855,7 @@
                                 139,
                                 140,
                                 141,
-                                142,
-                                143
+                                142
                             ],
                             "starting_column": 1,
                             "ending_column": 2
@@ -868,14 +868,14 @@
                 "type": "node",
                 "name": "block.timestamp > closingTimestamp",
                 "source_mapping": {
-                    "start": 3411,
+                    "start": 3401,
                     "length": 34,
                     "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                     "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                     "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                     "is_dependency": false,
                     "lines": [
-                        97
+                        96
                     ],
                     "starting_column": 13,
                     "ending_column": 47
@@ -885,13 +885,14 @@
                         "type": "function",
                         "name": "withdraw",
                         "source_mapping": {
-                            "start": 3303,
+                            "start": 3293,
                             "length": 382,
                             "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                             "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                             "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                             "is_dependency": false,
                             "lines": [
+                                94,
                                 95,
                                 96,
                                 97,
@@ -901,8 +902,7 @@
                                 101,
                                 102,
                                 103,
-                                104,
-                                105
+                                104
                             ],
                             "starting_column": 5,
                             "ending_column": 6
@@ -912,13 +912,14 @@
                                 "type": "contract",
                                 "name": "TomcatLaunchVault",
                                 "source_mapping": {
-                                    "start": 1270,
+                                    "start": 1260,
                                     "length": 3804,
                                     "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                                     "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                                     "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                                     "is_dependency": false,
                                     "lines": [
+                                        28,
                                         29,
                                         30,
                                         31,
@@ -1032,8 +1033,7 @@
                                         139,
                                         140,
                                         141,
-                                        142,
-                                        143
+                                        142
                                     ],
                                     "starting_column": 1,
                                     "ending_column": 2
@@ -1045,10 +1045,10 @@
                 }
             }
         ],
-        "description": "TomcatLaunchVault.withdraw(uint256) (contracts/launch/TomcatLaunchVault.sol#95-105) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp > closingTimestamp (contracts/launch/TomcatLaunchVault.sol#97)\n",
-        "markdown": "[TomcatLaunchVault.withdraw(uint256)](contracts/launch/TomcatLaunchVault.sol#L95-L105) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- [block.timestamp > closingTimestamp](contracts/launch/TomcatLaunchVault.sol#L97)\n",
-        "first_markdown_element": "contracts/launch/TomcatLaunchVault.sol#L95-L105",
-        "id": "0252dcc654b18fa7c73458b064929a021db3b68750293498c94de4ebb9a70c7b",
+        "description": "TomcatLaunchVault.withdraw(uint256) (contracts/launch/TomcatLaunchVault.sol#94-104) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp > closingTimestamp (contracts/launch/TomcatLaunchVault.sol#96)\n",
+        "markdown": "[TomcatLaunchVault.withdraw(uint256)](contracts/launch/TomcatLaunchVault.sol#L94-L104) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- [block.timestamp > closingTimestamp](contracts/launch/TomcatLaunchVault.sol#L96)\n",
+        "first_markdown_element": "contracts/launch/TomcatLaunchVault.sol#L94-L104",
+        "id": "91c003c3c05d2e2e99765a51f6c51682388cba66ae448682940ffe201a47bfc7",
         "check": "timestamp",
         "impact": "Low",
         "confidence": "Medium"
@@ -1059,13 +1059,14 @@
                 "type": "function",
                 "name": "lockMav",
                 "source_mapping": {
-                    "start": 4649,
+                    "start": 4639,
                     "length": 423,
                     "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                     "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                     "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                     "is_dependency": false,
                     "lines": [
+                        132,
                         133,
                         134,
                         135,
@@ -1074,8 +1075,7 @@
                         138,
                         139,
                         140,
-                        141,
-                        142
+                        141
                     ],
                     "starting_column": 5,
                     "ending_column": 6
@@ -1085,13 +1085,14 @@
                         "type": "contract",
                         "name": "TomcatLaunchVault",
                         "source_mapping": {
-                            "start": 1270,
+                            "start": 1260,
                             "length": 3804,
                             "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                             "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                             "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                             "is_dependency": false,
                             "lines": [
+                                28,
                                 29,
                                 30,
                                 31,
@@ -1205,8 +1206,7 @@
                                 139,
                                 140,
                                 141,
-                                142,
-                                143
+                                142
                             ],
                             "starting_column": 1,
                             "ending_column": 2
@@ -1219,14 +1219,14 @@
                 "type": "node",
                 "name": "block.timestamp <= closingTimestamp",
                 "source_mapping": {
-                    "start": 4701,
+                    "start": 4691,
                     "length": 35,
                     "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                     "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                     "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                     "is_dependency": false,
                     "lines": [
-                        134
+                        133
                     ],
                     "starting_column": 13,
                     "ending_column": 48
@@ -1236,13 +1236,14 @@
                         "type": "function",
                         "name": "lockMav",
                         "source_mapping": {
-                            "start": 4649,
+                            "start": 4639,
                             "length": 423,
                             "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                             "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                             "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                             "is_dependency": false,
                             "lines": [
+                                132,
                                 133,
                                 134,
                                 135,
@@ -1251,8 +1252,7 @@
                                 138,
                                 139,
                                 140,
-                                141,
-                                142
+                                141
                             ],
                             "starting_column": 5,
                             "ending_column": 6
@@ -1262,13 +1262,14 @@
                                 "type": "contract",
                                 "name": "TomcatLaunchVault",
                                 "source_mapping": {
-                                    "start": 1270,
+                                    "start": 1260,
                                     "length": 3804,
                                     "filename_relative": "contracts/launch/TomcatLaunchVault.sol",
                                     "filename_absolute": "/Users/slipstreamr/git/tomcat/protocol/contracts/launch/TomcatLaunchVault.sol",
                                     "filename_short": "contracts/launch/TomcatLaunchVault.sol",
                                     "is_dependency": false,
                                     "lines": [
+                                        28,
                                         29,
                                         30,
                                         31,
@@ -1382,8 +1383,7 @@
                                         139,
                                         140,
                                         141,
-                                        142,
-                                        143
+                                        142
                                     ],
                                     "starting_column": 1,
                                     "ending_column": 2
@@ -1395,10 +1395,10 @@
                 }
             }
         ],
-        "description": "TomcatLaunchVault.lockMav() (contracts/launch/TomcatLaunchVault.sol#133-142) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp <= closingTimestamp (contracts/launch/TomcatLaunchVault.sol#134)\n",
-        "markdown": "[TomcatLaunchVault.lockMav()](contracts/launch/TomcatLaunchVault.sol#L133-L142) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- [block.timestamp <= closingTimestamp](contracts/launch/TomcatLaunchVault.sol#L134)\n",
-        "first_markdown_element": "contracts/launch/TomcatLaunchVault.sol#L133-L142",
-        "id": "0fc9dad0dd71f034073485a09d6ab1ee142e178e6508fd35e2ef9819d4fa6f40",
+        "description": "TomcatLaunchVault.lockMav() (contracts/launch/TomcatLaunchVault.sol#132-141) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp <= closingTimestamp (contracts/launch/TomcatLaunchVault.sol#133)\n",
+        "markdown": "[TomcatLaunchVault.lockMav()](contracts/launch/TomcatLaunchVault.sol#L132-L141) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- [block.timestamp <= closingTimestamp](contracts/launch/TomcatLaunchVault.sol#L133)\n",
+        "first_markdown_element": "contracts/launch/TomcatLaunchVault.sol#L132-L141",
+        "id": "733367fa45a3d543a1bcb82fa7cef630e614bbdf8de58d0611fd5e1605640185",
         "check": "timestamp",
         "impact": "Low",
         "confidence": "Medium"

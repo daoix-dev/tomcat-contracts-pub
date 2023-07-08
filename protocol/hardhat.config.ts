@@ -2,13 +2,37 @@ require('dotenv').config();
 
 import '@nomicfoundation/hardhat-chai-matchers';
 import '@typechain/hardhat';
-import '@nomiclabs/hardhat-ethers';
-import '@nomiclabs/hardhat-etherscan';
-import '@openzeppelin/hardhat-upgrades';
 import 'hardhat-contract-sizer';
 import 'hardhat-gas-reporter';
+import 'hardhat-deploy';
 import 'solidity-coverage';
+import "@matterlabs/hardhat-zksync-deploy";
+import "@matterlabs/hardhat-zksync-solc";
+import "@matterlabs/hardhat-zksync-verify";
 import fs from "fs";
+
+const zkSyncNetworks = {
+    // dynamically changes endpoints for local tests
+    zkSyncTestnet: 
+        process.env.NODE_ENV == "test"
+        ? {
+            url: "http://localhost:3050",
+            ethNetwork: "http://localhost:8545",
+            zksync: true,
+        }
+        : {
+            url: process.env.ZKSYNCTESTNET_RPC_URL || "",
+            ethNetwork: "goerli",
+            zksync: true,
+            verifyURL: "https://zksync2-testnet-explorer.zksync.dev/contract_verification",
+        },
+    zkSyncMainnet: {
+        url: process.env.ZKSYNCTESTNET_RPC_URL || "",
+        ethNetwork: "ETH",
+        zksync: true,
+        verifyURL: 'https://zksync2-mainnet-explorer.zksync.io/contract_verification'
+    },
+}
 
 function getRemappings() {
     return fs
@@ -18,10 +42,7 @@ function getRemappings() {
       .map((line) => line.trim().split("="));
 }
 
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
-module.exports = {
+const config = {
     paths: {
         sources: "./contracts",
         artifacts: "./artifacts-hardhat",
@@ -45,15 +66,15 @@ module.exports = {
     },
     solidity: {
         compilers: [
-        {
-            version: '0.8.18',
-            settings: {
-            optimizer: {
-                enabled: true,
-                runs: 999999,
+            {
+                version: '0.8.18',
+                settings: {
+                    optimizer: {
+                        enabled: true,
+                        runs: 999999,
+                    },
+                },
             },
-            },
-        },
         ],
     },
     typechain: {
@@ -61,8 +82,12 @@ module.exports = {
         outDir: './typechain',
     },
     networks: {
+        hardhat: {
+            zksync: false,
+        },
         localhost: {
-            timeout: 100_000
+            timeout: 100_000,
+            zksync: false,
           },
         sepolia: {
             url: process.env.SEPOLIA_RPC_URL || '',
@@ -70,6 +95,7 @@ module.exports = {
                 ? [process.env.SEPOLIA_ADDRESS_PRIVATE_KEY]
                 : [],
             gasPrice: 2000000000,
+            zksync: false,
         },
         mainnet: {
             url: process.env.MAINNET_RPC_URL || '',
@@ -77,7 +103,9 @@ module.exports = {
                 ? [process.env.MAINNET_ADDRESS_PRIVATE_KEY]
                 : [],
             gasPrice: parseInt(process.env.MAINNET_GAS_IN_GWEI || '0') * 1000000000,
+            zksync: false,
         },
+        ...zkSyncNetworks,
     },
     etherscan: {
         // Your API key for Etherscan
@@ -92,5 +120,11 @@ module.exports = {
     },
     contractSizer: {
         alphaSort: true,
-    }
+    },
+    zksolc: {
+      version: "latest",
+      settings: {},
+    },
 };
+
+export default config;

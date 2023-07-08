@@ -1,11 +1,16 @@
 pragma solidity 0.8.18;
-// SPDX-License-Identifier: AGPL-3.0-or-later
-// Tomcat (interfaces/core/TcMav.sol)
+// SPDX-License-Identifier: AGPL-3.0
+// Tomcat (interfaces/core/ITcMav.sol)
 
-import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import { IERC20Permit } from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
+import { IOFT } from "@layerzerolabs/solidity-examples/contracts/token/oft/IOFT.sol";
 
-interface ITcMav is IERC20, IERC20Permit {
+/**
+ * @title tcMAV - Tomcat Finance liquid veMAV
+ * 
+ * @notice tcMAV is a LayerZero Omnichain Fungible Token (OFT) and ERC20, a liquid/transferrable receipt token for
+ * MAV that is deposited into Tomcat Finance.
+ */
+interface ITcMav is IOFT {
     event MinterSet(address indexed account, bool canMint);
 
     error NotMinter();
@@ -23,13 +28,13 @@ interface ITcMav is IERC20, IERC20Permit {
     function setMinter(address account, bool canMint) external;
 
     /**
-     * @notice Creates `amount` tcMAV tokens and assigns them to `account`, increasing
+     * @notice Creates `amount` of tcMAV tokens and assigns them to `account`, increasing
      * the total supply.
      */
     function mint(address recipient, uint256 amount) external;
 
     /**
-     * @notice Destroys `amount` tcMAV tokens from `account`, reducing the
+     * @notice Destroys `amount` of tcMAV tokens from `account`, reducing the
      * total supply.
      */
     function burn(address from, uint256 amount) external;

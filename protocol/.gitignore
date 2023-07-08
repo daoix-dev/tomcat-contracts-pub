@@ -8,15 +8,23 @@ venv
 # Note - hardhat puts the contracts in nested directories, whereas
 # Foundry makes it flat...so hardhat is easier to filter for dirs to blacklist
 artifacts-hardhat/@openzeppelin
+artifacts-hardhat/@layerzerolabs
 artifacts-hardhat/@prb
 artifacts-hardhat/build-info
 artifacts-hardhat/contracts/external
 artifacts-hardhat/**/*.dbg.json
+artifacts-hardhat-zk
+
 cache-hardhat
+cache-hardhat-zk
 
 # Forge files
 artifacts-foundry
 cache-foundry
+
+# zksync artifacts
+artifacts-zk
+cache-zk
 
 # Slither cache
 cache

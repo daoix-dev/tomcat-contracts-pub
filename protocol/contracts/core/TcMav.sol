@@ -1,31 +1,29 @@
 pragma solidity 0.8.18;
-// SPDX-License-Identifier: AGPL-3.0-or-later
+// SPDX-License-Identifier: AGPL-3.0
 // Tomcat (core/TcMav.sol)
 
-import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import { ERC20Permit } from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
+import { OFT } from "@layerzerolabs/solidity-examples/contracts/token/oft/OFT.sol";
 import { ITcMav } from "contracts/interfaces/core/ITcMav.sol";
 
 /**
  * @title tcMAV - Tomcat Finance liquid veMAV
  * 
- * @notice tcMAV is an ERC20, a liquid/transferrable receipt token for
+ * @notice tcMAV is a LayerZero Omnichain Fungible Token (OFT) and ERC20, a liquid/transferrable receipt token for
  * MAV that is deposited into Tomcat Finance.
  */
-contract TcMav is ERC20Permit, Ownable, ITcMav {
+contract TcMav is Ownable, OFT, ITcMav {
     /**
      * @notice A set of Tomcat addresses which are approved to mint/burn
      * the tcMAV token
      */
     mapping(address => bool) public override minters;
 
-    constructor(string memory _name, string memory _symbol)
-        ERC20(_name, _symbol)
-        ERC20Permit(_name)
+    constructor(address _layerZeroEndpoint)
         Ownable()
+        OFT("Tomcat tcMAV", "tcMAV", _layerZeroEndpoint)
     // solhint-disable-next-line no-empty-blocks
-    { }
+    {}
 
     /**
      * @notice Set whether an account can mint/burn this tcMAV token
@@ -37,7 +35,7 @@ contract TcMav is ERC20Permit, Ownable, ITcMav {
     }
 
     /**
-     * @notice Creates `amount` tcMAV tokens and assigns them to `account`, increasing
+     * @notice Creates `amount` of tcMAV tokens and assigns them to `account`, increasing
      * the total supply.
      */
     function mint(address recipient, uint256 amount) external override onlyMinters {
@@ -45,7 +43,7 @@ contract TcMav is ERC20Permit, Ownable, ITcMav {
     }
 
     /**
-     * @notice Destroys `amount` tcMAV tokens from `account`, reducing the
+     * @notice Destroys `amount` of tcMAV tokens from `account`, reducing the
      * total supply.
      */
     function burn(address from, uint256 amount) external override onlyMinters {
