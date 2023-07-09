@@ -1,0 +1,7 @@
+// sepolia: sepolia.tomcat.TOMCAT_LAUNCH_VAULT=0xf394229d38b74585f28Dd999B5b953654A238C4D
+// yarn hardhat verify --network sepolia 0xf394229d38b74585f28Dd999B5b953654A238C4D --constructor-args deploy/deploymentArgs/sepolia/0xf394229d38b74585f28Dd999B5b953654A238C4D.js
+module.exports = [
+  "0x9778a5Fe095BDD45E4E266B118e7B527cEC37878",
+  "0x24c317fE56F7e1671EA53fB9d79e2c804F366AD8",
+  1690243200
+];

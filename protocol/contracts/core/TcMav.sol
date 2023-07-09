@@ -10,7 +10,7 @@ import { ITcMav } from "contracts/interfaces/core/ITcMav.sol";
  * @title tcMAV - Tomcat Finance liquid veMAV
  * 
  * @notice tcMAV is a LayerZero Omnichain Fungible Token (OFT) and ERC20, a liquid/transferrable receipt token for
- * MAV that is deposited into Tomcat Finance.
+ * MAV that is staked into Tomcat Finance.
  */
 contract TcMav is Ownable, OFT, ITcMav {
     /**

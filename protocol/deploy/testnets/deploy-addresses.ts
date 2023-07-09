@@ -37,20 +37,20 @@ export interface DeployedContracts {
 export const DEPLOYED_CONTRACTS: {[key in keyof SupportedChains]: DeployedContracts} = {
     sepolia: {
         tomcat: {
-            TC_MAV_TOKEN: "0xD3d8967E4204e3848988076f13919Cbc8753C3FB",
-            TOMCAT_LAUNCH_VAULT: "0xeA7dcCd2a2539CaC967620cF77fBc142ed3D339D",
+            TC_MAV_TOKEN: "0x24c317fE56F7e1671EA53fB9d79e2c804F366AD8",
+            TOMCAT_LAUNCH_VAULT: "0xf394229d38b74585f28Dd999B5b953654A238C4D",
         },
         maverick: {
-            MAV_TOKEN: "0x1898dcd1A7d552E86DdaafD14A4d3d12EE92b42b",
+            MAV_TOKEN: "0x9778a5Fe095BDD45E4E266B118e7B527cEC37878",
         }
     },
     zkSyncTestnet: {
         tomcat: {
-            TC_MAV_TOKEN: "0xa4C477943601b423A0CBdBa870BDC4038F2ff9CD",
-            TOMCAT_LAUNCH_VAULT: "0x444bdF8E018BD01aDf5928049e6aDeC3C7E4C8d6",
+            TC_MAV_TOKEN: "0xb50E361bd120574a14054f13d8072A97A6c7E73d",
+            TOMCAT_LAUNCH_VAULT: "0x625d3E8d4487475F634a1178834339F419C549D0",
         },
         maverick: {
-            MAV_TOKEN: "0x07E681540F3B1cCA7b77fcA91c6E638a872A4898",
+            MAV_TOKEN: "0xDc358BcAe6BF999d125c2809953D4240e0A21dD4",
         }
     },
 };

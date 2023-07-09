@@ -8,7 +8,7 @@ import { IOFT } from "@layerzerolabs/solidity-examples/contracts/token/oft/IOFT.
  * @title tcMAV - Tomcat Finance liquid veMAV
  * 
  * @notice tcMAV is a LayerZero Omnichain Fungible Token (OFT) and ERC20, a liquid/transferrable receipt token for
- * MAV that is deposited into Tomcat Finance.
+ * MAV that is staked into Tomcat Finance.
  */
 interface ITcMav is IOFT {
     event MinterSet(address indexed account, bool canMint);

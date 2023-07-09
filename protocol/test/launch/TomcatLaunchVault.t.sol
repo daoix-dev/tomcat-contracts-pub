@@ -56,12 +56,12 @@ contract TomcatLaunchVaultTestBase is Test {
         locker = new MockTomcatLaunchLocker(address(mavToken));
     }
 
-    function deposit(address account, uint256 amount) internal {
+    function stake(address account, uint256 amount) internal {
         deal(address(mavToken), account, amount, true);
 
         vm.startPrank(account);
         mavToken.approve(address(launchVault), amount);
-        launchVault.deposit(amount);
+        launchVault.stake(amount);
         vm.stopPrank();
     }
 }
@@ -131,39 +131,39 @@ contract TomcatLaunchVaultTestAdmin is TomcatLaunchVaultTestBase {
     }
 }
 
-contract TomcatLaunchVaultTestDeposit is TomcatLaunchVaultTestBase {
-    event Deposit(address indexed account, uint256 amount);
+contract TomcatLaunchVaultTestStake is TomcatLaunchVaultTestBase {
+    event Stake(address indexed account, uint256 amount);
 
-    function test_deposit_failVaultClosed() public {
+    function test_stake_failVaultClosed() public {
         vm.startPrank(goose);
         vm.warp(CLOSING_TIME + 1);
         vm.expectRevert(abi.encodeWithSelector(TomcatLaunchVault.VaultClosed.selector));
-        launchVault.deposit(100);
+        launchVault.stake(100);
     }
 
-    function test_deposit_failBadAmount() public {
+    function test_stake_failBadAmount() public {
         vm.startPrank(goose);
         vm.expectRevert(abi.encodeWithSelector(TomcatLaunchVault.InvalidAmount.selector));
-        launchVault.deposit(0);
+        launchVault.stake(0);
     }
 
-    function test_deposit_failNotEnoughMav() public {
+    function test_stake_failNotEnoughMav() public {
         vm.startPrank(goose);
         deal(address(mavToken), goose, 1e18, true);
         mavToken.approve(address(launchVault), 5e18);
         vm.expectRevert("ERC20: transfer amount exceeds balance");
-        launchVault.deposit(5e18);
+        launchVault.stake(5e18);
     }
 
-    function test_deposit_success() public {
+    function test_stake_success() public {
         uint256 amount = 5e18;
         vm.startPrank(goose);
         deal(address(mavToken), goose, amount, true);
         mavToken.approve(address(launchVault), amount);
 
         vm.expectEmit(address(launchVault));
-        emit Deposit(goose, amount);
-        launchVault.deposit(amount);
+        emit Stake(goose, amount);
+        launchVault.stake(amount);
 
         // Goose was minted the amount of tcMAV
         assertEq(tcMavToken.balanceOf(goose), amount);
@@ -175,7 +175,7 @@ contract TomcatLaunchVaultTestDeposit is TomcatLaunchVaultTestBase {
         assertEq(mavToken.totalSupply(), amount);
     }
 
-    function test_fuzz_deposit(uint32 timestamp, uint256 amount) public {
+    function test_fuzz_stake(uint32 timestamp, uint256 amount) public {
         // amount == 0 tested above
         vm.assume(amount > 0);
 
@@ -186,11 +186,11 @@ contract TomcatLaunchVaultTestDeposit is TomcatLaunchVaultTestBase {
 
         if (timestamp > CLOSING_TIME) {
             vm.expectRevert(abi.encodeWithSelector(TomcatLaunchVault.VaultClosed.selector));
-            launchVault.deposit(amount);
+            launchVault.stake(amount);
         } else {
             vm.expectEmit(address(launchVault));
-            emit Deposit(goose, amount);
-            launchVault.deposit(amount);
+            emit Stake(goose, amount);
+            launchVault.stake(amount);
 
             // Goose was minted the amount of tcMAV
             assertEq(tcMavToken.balanceOf(goose), amount);
@@ -204,51 +204,51 @@ contract TomcatLaunchVaultTestDeposit is TomcatLaunchVaultTestBase {
     }
 }
 
-contract TomcatLaunchVaultTestWithdraw is TomcatLaunchVaultTestBase {
-    event Withdraw(address indexed account, uint256 amount);
+contract TomcatLaunchVaultTestUnstake is TomcatLaunchVaultTestBase {
+    event Unstake(address indexed account, uint256 amount);
 
-    function test_withdraw_failVaultClosed() public {
+    function test_unstake_failVaultClosed() public {
         vm.startPrank(goose);
         vm.warp(CLOSING_TIME + 1);
         vm.expectRevert(abi.encodeWithSelector(TomcatLaunchVault.VaultClosed.selector));
-        launchVault.withdraw(100);
+        launchVault.unstake(100);
     }
 
-    function test_withdraw_failBadAmount() public {
+    function test_unstake_failBadAmount() public {
         vm.startPrank(goose);
         vm.expectRevert(abi.encodeWithSelector(TomcatLaunchVault.InvalidAmount.selector));
-        launchVault.withdraw(0);
+        launchVault.unstake(0);
     }
 
-    function test_withdraw_failNotEnoughTcMav() public {
-        deposit(goose, 1e18);
+    function test_unstake_failNotEnoughTcMav() public {
+        stake(goose, 1e18);
 
         vm.startPrank(goose);
         tcMavToken.approve(address(launchVault), 5e18);
         vm.expectRevert("ERC20: burn amount exceeds balance");
-        launchVault.withdraw(5e18);
+        launchVault.unstake(5e18);
     }
 
-    function test_withdraw_success() public {
-        uint256 depositAmount = 5e18;
-        deposit(goose, depositAmount);
+    function test_unstake_success() public {
+        uint256 stakeAmount = 5e18;
+        stake(goose, stakeAmount);
 
         vm.startPrank(goose);
-        tcMavToken.approve(address(launchVault), depositAmount);
+        tcMavToken.approve(address(launchVault), stakeAmount);
 
-        uint256 withdrawAmount = 2e18;
+        uint256 unstakeAmount = 2e18;
         vm.expectEmit(address(launchVault));
-        emit Withdraw(goose, withdrawAmount);
-        launchVault.withdraw(withdrawAmount);
+        emit Unstake(goose, unstakeAmount);
+        launchVault.unstake(unstakeAmount);
 
         // Goose was minted the amount of tcMAV
-        assertEq(tcMavToken.balanceOf(goose), depositAmount - withdrawAmount);
-        assertEq(tcMavToken.totalSupply(), depositAmount - withdrawAmount);
+        assertEq(tcMavToken.balanceOf(goose), stakeAmount - unstakeAmount);
+        assertEq(tcMavToken.totalSupply(), stakeAmount - unstakeAmount);
 
         // The MAV is now in the vault
-        assertEq(mavToken.balanceOf(goose), withdrawAmount);
-        assertEq(mavToken.balanceOf(address(launchVault)), depositAmount - withdrawAmount);
-        assertEq(mavToken.totalSupply(), depositAmount);
+        assertEq(mavToken.balanceOf(goose), unstakeAmount);
+        assertEq(mavToken.balanceOf(address(launchVault)), stakeAmount - unstakeAmount);
+        assertEq(mavToken.totalSupply(), stakeAmount);
     }
 }
 
@@ -279,8 +279,8 @@ contract TomcatLaunchVaultTestLockMav is TomcatLaunchVaultTestBase {
     }
 
     function test_lockMav_success() public {
-        deposit(goose, 5e18);
-        deposit(iceman, 2.5e18);
+        stake(goose, 5e18);
+        stake(iceman, 2.5e18);
 
         vm.startPrank(msig);
         launchVault.setLocker(address(locker));
@@ -303,22 +303,22 @@ contract TomcatLaunchVaultTestLockMav is TomcatLaunchVaultTestBase {
         assertEq(mavToken.totalSupply(), 7.5e18);
     }
 
-    function test_fuzz_combined(uint256 depositAmount, uint256 withdrawAmount) public {
-        vm.assume(depositAmount > withdrawAmount);
-        vm.assume(depositAmount > 0);
-        vm.assume(withdrawAmount > 0);
+    function test_fuzz_combined(uint256 stakeAmount, uint256 unstakeAmount) public {
+        vm.assume(stakeAmount > unstakeAmount);
+        vm.assume(stakeAmount > 0);
+        vm.assume(unstakeAmount > 0);
 
-        // Deposit some, wait some days, withdraw some
-        deposit(goose, depositAmount);
+        // Stake some, wait some days, unstake some
+        stake(goose, stakeAmount);
         vm.warp(block.timestamp + 25 days);
         vm.prank(goose);
-        launchVault.withdraw(withdrawAmount);
+        launchVault.unstake(unstakeAmount);
 
         vm.warp(CLOSING_TIME + 1 days);
         vm.startPrank(msig);
         launchVault.setLocker(address(locker));
 
-        uint256 lockedAmount = depositAmount - withdrawAmount;
+        uint256 lockedAmount = stakeAmount - unstakeAmount;
         vm.expectEmit(address(launchVault));
         emit MavLocked(lockedAmount);
         launchVault.lockMav();
@@ -328,9 +328,9 @@ contract TomcatLaunchVaultTestLockMav is TomcatLaunchVaultTestBase {
         assertEq(tcMavToken.totalSupply(), lockedAmount);
 
         // The MAV is now in the vault
-        assertEq(mavToken.balanceOf(goose), withdrawAmount);
+        assertEq(mavToken.balanceOf(goose), unstakeAmount);
         assertEq(mavToken.balanceOf(address(launchVault)), 0);
         assertEq(mavToken.balanceOf(address(locker)), lockedAmount);
-        assertEq(mavToken.totalSupply(), depositAmount);
+        assertEq(mavToken.totalSupply(), stakeAmount);
     }
 }

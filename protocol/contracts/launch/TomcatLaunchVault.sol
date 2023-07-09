@@ -12,16 +12,16 @@ import { SafeERC20 } from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.s
 /**
  * @title Tomcat Launch Vault 
  * 
- * @notice The Tomcat Finance Vault where users deposit MAV and receive tcMAV 1:1 in return.
+ * @notice The Tomcat Finance Vault where users stake MAV and receive tcMAV 1:1 in return.
  * tcMAV is a liquid/tradeable receipt token.
  * 
- * Users can deposit/withdraw their MAV freely, until the vault closing time (prior to the veMAV 
+ * Users can stake/unstake their MAV freely, until the vault closing time (prior to the veMAV 
  * incentive snapshot date).
  * 
- * Upon vault closing, Tomcat Finance will lock the MAV for veMAV and withdrawals will no
+ * Upon vault closing, Tomcat Finance will lock the MAV for veMAV and unstaking will no
  * longer be possible. (It will be possible to sell tcMAV on secondary markets)
  * 
- * Tomcat Launch Vault depositors will be eligable for future incentives:
+ * Tomcat Launch Vault stakers will be eligable for future incentives:
  *   - Extra tcMAV, proportional from the total amount Tomcat was awarded from the Maverick incentives program
  *   - TOMCAT emissions, Tomcat Finance's governance token
  */
@@ -51,8 +51,8 @@ contract TomcatLaunchVault is Ownable {
      */
     ITomcatLaunchLocker public locker;
 
-    event Deposit(address indexed account, uint256 amount);
-    event Withdraw(address indexed account, uint256 amount);
+    event Stake(address indexed account, uint256 amount);
+    event Unstake(address indexed account, uint256 amount);
     event ClosingTimestampExtended(uint256 timestamp);
     event LockerSet(address indexed locker);
     event MavLocked(uint256 amount);
@@ -70,14 +70,14 @@ contract TomcatLaunchVault is Ownable {
     }
 
     /**
-     * @notice Users can deposit MAV into the vault and will be minted
+     * @notice Users can stake MAV into the vault and will be minted
      * tcMAV 1:1
-     * @param _amount The amount of MAV to deposit
+     * @param _amount The amount of MAV to stake
      */
-    function deposit(uint256 _amount) external {
+    function stake(uint256 _amount) external {
         if (_amount == 0) revert InvalidAmount();
         if (block.timestamp > closingTimestamp) revert VaultClosed();
-        emit Deposit(msg.sender, _amount);
+        emit Stake(msg.sender, _amount);
 
         // Pull the MAV from the user
         mavToken.safeTransferFrom(msg.sender, address(this), _amount);
@@ -87,14 +87,14 @@ contract TomcatLaunchVault is Ownable {
     }
 
     /**
-     * @notice Users may withdraw their MAV 1:1, their
+     * @notice Users may unstake their MAV 1:1, their
      * tcMAV will be burned.
-     * @param _amount The amount of MAV to withdraw
+     * @param _amount The amount of MAV to unstake
      */
-    function withdraw(uint256 _amount) external {
+    function unstake(uint256 _amount) external {
         if (_amount == 0) revert InvalidAmount();
         if (block.timestamp > closingTimestamp) revert VaultClosed();
-        emit Withdraw(msg.sender, _amount);
+        emit Unstake(msg.sender, _amount);
 
         // Burn the tcMAV
         tcMavToken.burn(msg.sender, _amount);
@@ -106,7 +106,7 @@ contract TomcatLaunchVault is Ownable {
     /**
      * @notice If the Maverick incentives program dates are extended,
      * Tomcat can extend the vault closing date so users can continue
-     * depositing/withdrawing MAV
+     * staking/unstaking MAV
      */
     function extendClosingTimestamp(uint256 _timestamp) external onlyOwner {
         if (_timestamp <= closingTimestamp) revert InvalidAmount();
